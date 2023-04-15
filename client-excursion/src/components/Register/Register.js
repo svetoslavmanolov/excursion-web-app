@@ -12,16 +12,10 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData(e.target);
         const email = formData.get('email');
         const username = formData.get('username');
         const password = formData.get('password');
-        // const rePassword = formData.get('rePassword');
-
-        // if (password !== rePassword) {
-        //     return;
-        // }
 
         authService.register(email, username, password)
             .then(authData => {
@@ -39,8 +33,6 @@ const Register = () => {
                 <input type="text" id="username" name="username" placeholder="Enter your Username" />
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Password" />
-                {/* <label htmlFor="rePassword">Repeat Password:</label>
-                <input type="password" id="rePassword" name="rePassword" placeholder="Repeat Password" /> */}
                 <input type="submit" className="register" value="Register" />
                 <span style={{color:'white'}}>Already have an account? <Link to={`/login`} style={{textDecoration:'underline'}}>Login</Link></span>
             </form>

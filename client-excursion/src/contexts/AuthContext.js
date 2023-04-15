@@ -15,18 +15,13 @@ export const AuthProvider = ({ children }) => {
         setAuth({});
     };
 
-    // const isUserIsOwner = (user, excursion) => {
-    //     return user == excursion;
-    // }
-
-
     return (
         <AuthContext.Provider value={{
             user: auth.user,
             userLogin,
             userLogout,
-            // isUserIsOwner
-        }}>
+        }}
+        >
             {children}
         </AuthContext.Provider>
     )

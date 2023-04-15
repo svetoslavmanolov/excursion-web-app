@@ -3,12 +3,10 @@ const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 dotenv.config();
 
-
 const authService = require('../services/authService');
-const { COOKIE_SESSION_NAME } = require('../constants');
 const { getErrorMessage } = require('../utils/errorHelpers');
-const SECRET = process.env.SECRET;
 const { isAuth, isGuest } = require('../middlewares/authMiddleware');
+const SECRET = process.env.SECRET;
 
 router.post('/register', isGuest, async (req, res) => {
     const { email, username, password } = req.body;
@@ -17,10 +15,9 @@ router.post('/register', isGuest, async (req, res) => {
     // }
     try {
         const user = await authService.create({ email, username, password });
-        // const token = await authService.createToken(user);
-        const payload = { _id: user._id, username: user.username };
-        const token = jwt.sign(payload, SECRET, { expiresIn: '1d' });
-        // res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
+        const token = await authService.createToken(user);
+        // const payload = { _id: user._id, username: user.username };
+        // const token = jwt.sign(payload, SECRET, { expiresIn: '1d' });
         res.cookie('token', token, { httpOnly: true })
         res.status(200).json({ user: { _id: user._id, email: user.email, username: user.username } })
     } catch (error) {
@@ -32,12 +29,8 @@ router.post('/login', isGuest, async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await authService.login(email, password);
-        // const token = await authService.createToken(user);
-        const payload = { _id: user._id, username: user.username };
-        // const token = jwt.sign(payload, SECRET, { expiresIn: '1d' });
         const token = await authService.createToken(user);
-
-        res.cookie('token', token, { httpOnly: false })
+        res.cookie('token', token, { httpOnly: true })
         res.status(200).json({ user: { _id: user._id, email: user.email, username: user.username } })
     } catch (error) {
         res.status(400).json({ error: getErrorMessage(error) });

@@ -71,10 +71,6 @@ const EditExcursion = () => {
         const excursionData = Object.fromEntries(new FormData(e.target));
         excursionService.edit(excursionId, excursionData)
             .then(result => {
-                // if (result.error) {
-                //     setError(result.error)
-                //     return;
-                // }
                 excursionEdit(excursionId, result);
                 navigate(`/catalog/${excursionId}`, { replace: true });
             });
@@ -82,11 +78,8 @@ const EditExcursion = () => {
 
     const isFormValid = !Object.values(errors).some(x => x);
 
-
     return (
         <>
-            {/* {error && <ErrorHandler error={error}/>} */}
-
             <section id="editPage">
                 <form id='editForm' onSubmit={onSubmit}>
                     <label htmlFor="title">Title:</label>
@@ -98,7 +91,6 @@ const EditExcursion = () => {
                         defaultValue={currentExcursion.title}
                         onChange={changeHandler}
                         onBlur={(e) => minLength(e, 5)}
-
                     />
                     {errors.title &&
                         <p className="create-error">Title should be at least 5 characters long! </p>

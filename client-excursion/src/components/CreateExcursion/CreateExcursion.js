@@ -1,24 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CreateExcursion.css';
 
 import { ExcursionContext } from '../../contexts/ExcursionContext';
-// import { ErrorHandlerCreateFormContext } from '../../contexts/ErrorHandlerCreateFormContext';
 import * as excursionService from '../../services/excursionService';
-import ErrorHandler from '../ErrorHandler/ErrorHandler';
-
 
 const CreateExcursion = () => {
     const { excursionAdd } = useContext(ExcursionContext);
-    // const { errors,
-    //     values,
-    //     changeHandler,
-    //     minLength,
-    //     minMaxLength,
-    //     isPositive,
-    //     isCorrectImageUrl } = useContext(ErrorHandlerCreateFormContext);
     const navigate = useNavigate();
-    // const [error, setError] = useState('');
 
     const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
@@ -35,7 +24,6 @@ const CreateExcursion = () => {
             ...state,
             [e.target.name]: e.target.value
         }));
-        // console.log(errors)
     }
 
     const minLength = (e, bound) => {
@@ -75,24 +63,15 @@ const CreateExcursion = () => {
 
         excursionService.create(excursionData)
             .then(result => {
-                // console.log(result)
-
-                // if (result.error) {
-                //     setError(result.error)
-                //     return;
-                // }
                 excursionAdd(result)
                 navigate('/catalog');
             });
     }
 
-    // const isFormValid = !(Object.values(errors).some(x => x) && !Object.keys(errors).length === 0);
-    const isFormValid = !Object.values(errors).some(x => x) && Object.keys(errors).length == 6
+    const isFormValid = !Object.values(errors).some(x => x) && Object.keys(errors).length === 6
 
     return (
         <>
-            {/* {error ? <ErrorHandler error={error} /> : ''} */}
-
             <section id="createPage">
                 <form id='createForm' onSubmit={onSubmit}>
                     <label htmlFor="title">Title:</label>
@@ -184,8 +163,6 @@ const CreateExcursion = () => {
             </section>
         </>
     )
-
 }
-
 
 export default CreateExcursion;

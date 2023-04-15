@@ -8,7 +8,6 @@ const Header = () => {
         <header>
             <nav>
                 <ul>
-                    {/* <!--For all users--> */}
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/catalog">Catalog</Link></li>
 

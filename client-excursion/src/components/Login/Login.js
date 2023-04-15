@@ -9,27 +9,23 @@ import ErrorHandler from "../ErrorHandler/ErrorHandler";
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
-
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        const {email, password} = Object.fromEntries(new FormData(e.target));
-
+        const { email, password } = Object.fromEntries(new FormData(e.target));
         authService.login(email, password)
-        .then(authData => {
-            if (authData.error) {
-                const confirmation = window.confirm('Are you sure you want to delete this excursion?');
-                setError(authData.error)
-                return;
-            }
-            userLogin(authData);
-            navigate('/');
-        })
-        .catch(() => {
-            navigate('/login');
-        })
+            .then(authData => {
+                if (authData.error) {
+                    setError('Wrong email or password')
+                    return;
+                }
+                userLogin(authData);
+                navigate('/');
+            })
+            .catch(() => {
+                navigate('/login');
+            })
     }
 
     return (
@@ -41,8 +37,11 @@ const Login = () => {
                 <input type="text" id="email" name="email" placeholder="Email" />
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Password" />
+                {error &&
+                    <p className="create-error">{error}</p>
+                }
                 <input type="submit" className="register" value="Login" />
-                <span style={{color:'white'}}>Don't have an account? <Link to={'/register'} style={{textDecoration:'underline'}}>Sign up</Link></span>
+                <span style={{ color: 'white' }}>Don't have an account? <Link to={'/register'} style={{ textDecoration: 'underline' }}>Sign up</Link></span>
             </form>
         </section>
     )

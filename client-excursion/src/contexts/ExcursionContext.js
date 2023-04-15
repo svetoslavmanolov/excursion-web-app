@@ -1,5 +1,4 @@
 import { createContext, useEffect, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
 
 import * as excursionService from '../services/excursionService';
 
@@ -33,7 +32,6 @@ const excursionReducer = (state, action) => {
 };
 
 export const ExcursionProvider = ({ children }) => {
-    const navigate = useNavigate();
     const [excursions, dispatch] = useReducer(excursionReducer, []);
 
     useEffect(() => {

@@ -8,16 +8,6 @@ export const useLocalStorage = (key, defaultValue) => {
     });
 
     const setLocalStorageValue = (newValue) => {
-        // if(newValue.hasOwnProperty('error')) {
-        //     return;
-        // }
-        // if (newValue.hasOwnProperty('user' || '{}')) {
-        //     localStorage.setItem(key, JSON.stringify(newValue));
-        //     setValue(newValue);
-        // } else {
-        //     return;
-        // }
-
         localStorage.setItem(key, JSON.stringify(newValue));
             setValue(newValue);
     };

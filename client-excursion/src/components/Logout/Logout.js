@@ -14,7 +14,7 @@ const Logout = () => {
         authService.logout(userId)
         userLogout();
         navigate('/', { replace: true });
-    }, []);
+    });
 }
 
 export default Logout;

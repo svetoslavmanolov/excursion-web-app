@@ -22,14 +22,10 @@ const Search = () => {
     return (
         <section className="search">
             <h1>Search for your excursion</h1>
-
             <form className="search-form" onSubmit={onSearchSubmit}>
                 <input type="text" className="search-title" name="" placeholder="Search for excursion title..." onChange={onSearchChange} value={search} />
-                {/* <input type="text" className="search-charity" name="" placeholder="Search Charity..." /> */}
                 <button type="submit" className="btn-search">Search</button>
             </form>
-
-            {/* <!--If there are matches after search--> */}
             <div className="search-result">
                 <div className="search-list">
                     {filteredExcursions.length > 0

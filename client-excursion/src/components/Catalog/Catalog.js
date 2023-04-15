@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import './Catalog.css';
 
-import { ExcursionContext } from "../../contexts/ExcursionContext";
 import CatalogItem from '../Catalog/CatalogItem/CatalogItem';
 import * as excursionService from '../../services/excursionService';
 
 const Catalog = () => {
-
-    // const { excursions } = useContext(ExcursionContext);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -15,7 +12,8 @@ const Catalog = () => {
             .then(excursions => {
                 setData(excursions);
             });
-    }, [data]);
+    }, []);
+    console.log(data)
 
 
     return (
@@ -25,9 +23,9 @@ const Catalog = () => {
                     ? data.map(x => <CatalogItem key={x._id} excursion={x} />)
                     : <div className="guest">Loading...</div>
                 }
-                {data.length < 0 &&
+                {/* {data.length < 0 &&
                     <div className="guest">There are no excursions found...</div>
-                }
+                } */}
             </div>
         </section >
 

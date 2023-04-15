@@ -15,34 +15,24 @@ const ExcursionDetails = () => {
     const { user } = useContext(AuthContext);
     const { excursionId } = useParams();
 
-    // const [isOwner, setIsOwner] = useState(Boolean);
     const [isBooked, setIsBooked] = useState(Boolean);
     const [bookedUsers, setBookedUsers] = useState([]);
     const [error, setError] = useState('');
 
     const currentExcursion = selectExcursion(excursionId);
-    // let currentExcursion;
-
-    // const isOwner = currentExcursion.owner._id === user?._id;
 
     useEffect(() => {
         const effectFunc = async () => {
             const excursionDetails = await excursionService.getOne(excursionId);
             const excursionComments = await commentService.getCommentsByExcursionId(excursionId);
             fetchExcursionDetails(excursionId, { ...excursionDetails, comments: excursionComments.map(x => x) });
-            setIsBooked(excursionDetails.listOfUsersBooked.some(x => x._id == user?._id));
+            setIsBooked(excursionDetails.listOfUsersBooked.some(x => x._id === user?._id));
             setBookedUsers(excursionDetails.listOfUsersBooked.map(x => x.username));
         }
         effectFunc();
-
-        // excursionService.getAll()
-        // .then(excursions => {
-        //     currentExcursion = excursions.find(x => x._id === excursionId)
-        // })
     }, [isBooked]);
 
     const isOwner = currentExcursion.owner._id === user?._id;
-
 
     const excursionDeleteHandler = () => {
         const confirmation = window.confirm('Are you sure you want to delete this excursion?');
@@ -71,7 +61,7 @@ const ExcursionDetails = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const comment = formData.get('comment');
-        if (comment != '') {
+        if (comment !== '') {
             commentService.create(excursionId, comment)
                 .then(result => {
                     addComment(excursionId, result);
