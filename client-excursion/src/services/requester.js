@@ -7,12 +7,12 @@ const request = async (method, url, data) => {
         let buildRequest;
 
         if (method === 'GET') {
-            buildRequest = fetch(url, { headers, credentials: 'include' });
-            // buildRequest = fetch(url, { headers });
+            // buildRequest = fetch(url, { headers, credentials: 'include' });
+            buildRequest = fetch(url, { headers });
         } else {
             buildRequest = fetch(url, {
                 method,
-                credentials: 'include',
+                // credentials: 'include',
                 headers: {
                     ...headers,
                     'content-type': 'application/json'
