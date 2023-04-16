@@ -24,8 +24,8 @@ const port = process.env.PORT || 3005;
 
 // app.set('view engine', 'hbs');
 
-app.use(cors({origins: "https://excursion-web-app.vercel.app", credentials: true}));
-//{ origin: whitelist, credentials: true })
+app.use(cors({credentials: true}));
+// { origin: whitelist, credentials: true })
 // app.use(cors({ 'Access-Control-Allow-Origin': '*', credentials: true }));
 // app.use(cors({ origin: '*' }));
 app.use(express.urlencoded({ extended: true }));
