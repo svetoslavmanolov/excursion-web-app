@@ -1,8 +1,8 @@
 import * as request from './requester';
+import { baseUrl } from '../env';
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
 // const baseUrl = 'http://localhost:3005';
-
 
 export const getAll = () =>
     request.get(`${baseUrl}/excursions`);

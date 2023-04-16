@@ -13,6 +13,12 @@ const { errorHandler } = require('./middlewares/errorHandlerMiddleware');
 // const Excursion = require('./models/Excursion');
 // const {user} = require('./utils/data');
 
+const corsOptions = {
+    AccessControlAllowOrigin: '*',
+    origin: 'https://excursion-web-app.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+  }
+
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3005;
@@ -24,10 +30,12 @@ const port = process.env.PORT || 3005;
 
 // app.set('view engine', 'hbs');
 
-app.use(cors({credentials: true}));
+// app.use(cors({ origin: whitelist, credentials: true }));
 // { origin: whitelist, credentials: true })
 // app.use(cors({ 'Access-Control-Allow-Origin': '*', credentials: true }));
 // app.use(cors({ origin: '*' }));
+app.use(cors(corsOptions))
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());

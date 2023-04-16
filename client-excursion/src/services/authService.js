@@ -1,8 +1,8 @@
 import * as request from './requester';
+import { baseUrl } from '../env';
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
 // const baseUrl = 'http://localhost:3005';
-
 
 export const register = (email, username, password) =>
     request.post(`${baseUrl}/auth/register`, { email, username, password });
