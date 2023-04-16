@@ -1,9 +1,9 @@
 const express = require('express');
-const hbs = require('express-handlebars');
+// const hbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const whitelist = ['http://localhost:3000'];
+// const whitelist = ['http://localhost:3000'];
 
 const routes = require('./routes');
 const { dbInit } = require('./config/db');
@@ -17,7 +17,7 @@ const corsOptions = {
     AccessControlAllowOrigin: '*',
     origin: 'https://excursion-web-app.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
-  }
+}
 
 dotenv.config();
 const app = express();
@@ -34,7 +34,8 @@ const port = process.env.PORT || 3005;
 // { origin: whitelist, credentials: true })
 // app.use(cors({ 'Access-Control-Allow-Origin': '*', credentials: true }));
 // app.use(cors({ origin: '*' }));
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
+app.use(cors({ origin: 'https://excursion-web-app.vercel.app', credentials: true }))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
