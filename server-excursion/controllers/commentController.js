@@ -22,7 +22,6 @@ router.post('/create', async (req, res) => {
 
 router.get('/:excursionId', async (req, res) => {
     const excursion = await commentService.getCommentsByExcursionId(req.params.excursionId);
-    // console.log(excursion.comments)
     res.status(200).json( excursion?.comments );
 });
 

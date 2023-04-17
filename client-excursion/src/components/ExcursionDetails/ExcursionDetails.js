@@ -4,7 +4,6 @@ import './ExcursionDetails.css';
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { ExcursionContext } from "../../contexts/ExcursionContext";
-import ErrorHandler from "../ErrorHandler/ErrorHandler";
 
 import * as excursionService from '../../services/excursionService';
 import * as commentService from '../../services/commentService';
@@ -70,68 +69,67 @@ const ExcursionDetails = () => {
     };
 
     return (
-        <>
-            {error && <ErrorHandler error={error} />}
-            <section id="detailsPage">
-                <div id="detailsInfo">
-                    <h1>EXCURSION NAME: {currentExcursion.title}</h1>
-                    <div className="info">
-                        <div><img src={currentExcursion.image} alt='excursionImage' /></div>
-                        <div className="info-text">
-                            <h3>DURATION: {currentExcursion.duration}</h3>
-                            <h3>DESTINATION: {currentExcursion.destination}</h3>
-                            <h3>DESCRIPTION: {currentExcursion.description}</h3>
-                            <h3>CREATOR: {currentExcursion.creatorName}</h3>
-                            <br />
-                            <h3>PEOPLE WHO HAVE BOOKED THIS PLACE: <br /><span style={{ fontStyle: 'italic' }}>{bookedUsers.join(', ')}</span></h3>
-                            <h2>PRICE: ${currentExcursion.price}</h2>
-                        </div>
-                    </div>
-                    <div className="buttons">
-                        {user && isOwner &&
-                            <>
-                                <Link to={`/excursions/${excursionId}/edit`} style={{ margin: '10px' }} className="edit-btn">Edit Excursion</Link>
-                                <Link to={'/catalog'} onClick={excursionDeleteHandler} style={{ margin: '10px' }} className="delete-btn">Delete Excursion</Link>
-                            </>}
-                        {user && isBooked && !isOwner && <p> <span className="buy">Thank you for your booking!</span></p>}
-                        {user && !isBooked && !isOwner && <Link to='' onClick={excursionBookHandler} className="buy-btn">Book it!</Link>}
-                        {!user && <Link to={'/login'}>Log in to book this excursion!</Link>}
-                        <div className="info-section">
-                            <div className="details-comments">
-                                <h2 style={{ textAlign: 'start', paddingLeft: '60px', paddingTop: '10px' }}>Comments:</h2>
-                                <ul>
-                                    {currentExcursion.comments?.map(x =>
-                                        <li key={x._id} className="comment">
-                                            <span>User: <span style={{ fontWeight: 'bold' }}>{`${x.creator}`}</span></span> <br />
-                                            <span>Comment: <span style={{ fontWeight: 'bold' }}>{`${x.text}`}</span></span>
-                                        </li>
-                                    )}
-                                </ul>
-                                {!currentExcursion.comments &&
-                                    <p>No comments.</p>
-                                }
-                            </div>
-                        </div>
 
-                        <article className="create-comment">
-                            {/* <label>Add new comment:</label> */}
-                            <form className="form" onSubmit={addCommentHandler}>
-                                <textarea
-                                    name="comment"
-                                    placeholder="Add your comment here..."
-                                />
-
-                                <input
-                                    className="btn submit"
-                                    type="submit"
-                                    value="Add comment"
-                                />
-                            </form>
-                        </article>
+        < section id="detailsPage" >
+            <div id="detailsInfo">
+                <h1>EXCURSION NAME: {currentExcursion.title}</h1>
+                <div className="info">
+                    <div><img src={currentExcursion.image} alt='excursionImage' /></div>
+                    <div className="info-text">
+                        <h3>DURATION: {currentExcursion.duration}</h3>
+                        <h3>DESTINATION: {currentExcursion.destination}</h3>
+                        <h3>DESCRIPTION: {currentExcursion.description}</h3>
+                        <h3>CREATOR: {currentExcursion.creatorName}</h3>
+                        <br />
+                        <h3>PEOPLE WHO HAVE BOOKED THIS PLACE: <br /><span style={{ fontStyle: 'italic' }}>{bookedUsers.join(', ')}</span></h3>
+                        <h2>PRICE: ${currentExcursion.price}</h2>
                     </div>
                 </div>
-            </section >
-        </>
+                <div className="buttons">
+                    {user && isOwner &&
+                        <>
+                            <Link to={`/excursions/${excursionId}/edit`} style={{ margin: '10px' }} className="edit-btn">Edit Excursion</Link>
+                            <Link to={'/catalog'} onClick={excursionDeleteHandler} style={{ margin: '10px' }} className="delete-btn">Delete Excursion</Link>
+                        </>}
+                    {user && isBooked && !isOwner && <p> <span className="buy">Thank you for your booking!</span></p>}
+                    {user && !isBooked && !isOwner && <Link to='' onClick={excursionBookHandler} className="buy-btn">Book it!</Link>}
+                    {!user && <Link to={'/login'}>Log in to book this excursion!</Link>}
+                    <div className="info-section">
+                        <div className="details-comments">
+                            <h2 style={{ textAlign: 'start', paddingLeft: '60px', paddingTop: '10px' }}>Comments:</h2>
+                            <ul>
+                                {currentExcursion.comments?.map(x =>
+                                    <li key={x._id} className="comment">
+                                        <span>User: <span style={{ fontWeight: 'bold' }}>{`${x.creator}`}</span></span> <br />
+                                        <span>Comment: <span style={{ fontWeight: 'bold' }}>{`${x.text}`}</span></span>
+                                    </li>
+                                )}
+                            </ul>
+                            {!currentExcursion.comments &&
+                                <p>No comments.</p>
+                            }
+                        </div>
+                    </div>
+
+                    <article className="create-comment">
+                        {/* <label>Add new comment:</label> */}
+                        <form className="form" onSubmit={addCommentHandler}>
+                            <textarea
+                                name="comment"
+                                placeholder="Add your comment here..."
+                            />
+
+                            <input
+                                className="btn submit"
+                                type="submit"
+                                value="Add comment"
+                            />
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </section >
+
     )
 }
 

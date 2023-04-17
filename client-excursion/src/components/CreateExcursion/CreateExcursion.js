@@ -71,97 +71,97 @@ const CreateExcursion = () => {
     const isFormValid = !Object.values(errors).some(x => x) && Object.keys(errors).length === 6
 
     return (
-        <>
-            <section id="createPage">
-                <form id='createForm' onSubmit={onSubmit}>
-                    <label htmlFor="title">Title:</label>
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        placeholder="Title..."
-                        value={values.title}
-                        onChange={changeHandler}
-                        onBlur={(e) => minLength(e, 5)}
-                    />
-                    {errors.title &&
-                        <p className="create-error">Title should be at least 5 characters long! </p>
-                    }
 
-                    <label htmlFor="duration">Duration:</label>
-                    <input
-                        type="text"
-                        id="duration"
-                        name="duration"
-                        placeholder="Duration..."
-                        value={values.duration}
-                        onChange={changeHandler}
-                        onBlur={(e) => minLength(e, 3)}
-                    />
-                    {errors.duration &&
-                        <p className="create-error">Duration should be at least 3 characters long! </p>
-                    }
+        <section id="createPage">
+            <form id='createForm' onSubmit={onSubmit}>
+                <label htmlFor="title">Title:</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Title..."
+                    value={values.title}
+                    onChange={changeHandler}
+                    onBlur={(e) => minLength(e, 5)}
+                />
+                {errors.title &&
+                    <p className="create-error">Title should be at least 5 characters long! </p>
+                }
 
-                    <label htmlFor="destination">Destination:</label>
-                    <input
-                        type="text"
-                        id="destination"
-                        name="destination"
-                        placeholder="Destination..."
-                        value={values.destination}
-                        onChange={changeHandler}
-                        onBlur={(e) => minLength(e, 3)}
-                    />
-                    {errors.destination &&
-                        <p className="create-error">Destination should be at least 3 characters long!</p>
-                    }
+                <label htmlFor="duration">Duration:</label>
+                <input
+                    type="text"
+                    id="duration"
+                    name="duration"
+                    placeholder="Duration..."
+                    value={values.duration}
+                    onChange={changeHandler}
+                    onBlur={(e) => minLength(e, 3)}
+                />
+                {errors.duration &&
+                    <p className="create-error">Duration should be at least 3 characters long! </p>
+                }
 
-                    <label htmlFor="price">Price:</label>
-                    <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        placeholder="Price..."
-                        value={values.price}
-                        onChange={changeHandler}
-                        onBlur={isPositive}
-                    />
-                    {errors.price &&
-                        <p className="create-error">Price should be a positive number!</p>
-                    }
+                <label htmlFor="destination">Destination:</label>
+                <input
+                    type="text"
+                    id="destination"
+                    name="destination"
+                    placeholder="Destination..."
+                    value={values.destination}
+                    onChange={changeHandler}
+                    onBlur={(e) => minLength(e, 3)}
+                />
+                {errors.destination &&
+                    <p className="create-error">Destination should be at least 3 characters long!</p>
+                }
 
-                    <label htmlFor="description">Description:</label>
-                    <input
-                        type="text"
-                        id="description"
-                        name="description"
-                        placeholder="Description..."
-                        value={values.description}
-                        onChange={changeHandler}
-                        onBlur={(e) => minMaxLength(e, 4, 50)}
-                    />
-                    {errors.description &&
-                        <p className="create-error">Description should be between 4 and 50 characters long!</p>
-                    }
+                <label htmlFor="price">Price:</label>
+                <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    placeholder="Price..."
+                    value={values.price}
+                    onChange={changeHandler}
+                    onBlur={isPositive}
+                />
+                {errors.price &&
+                    <p className="create-error">Price should be a positive number!</p>
+                }
 
-                    <label htmlFor="image">Image:</label>
-                    <input
-                        type="text"
-                        id="image"
-                        name="image"
-                        placeholder="Image..."
-                        value={values.image}
-                        onChange={changeHandler}
-                        onBlur={isCorrectImageUrl}
-                    />
-                    {errors.image &&
-                        <p className="create-error">The image url should start with 'http'</p>
-                    }
+                <label htmlFor="description">Description:</label>
+                <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    placeholder="Description..."
+                    value={values.description}
+                    onChange={changeHandler}
+                    onBlur={(e) => minMaxLength(e, 4, 50)}
+                />
+                {errors.description &&
+                    <p className="create-error">Description should be between 4 and 50 characters long!</p>
+                }
 
-                    <input type="submit" className={!isFormValid ? 'submitButton' : ''} disabled={!isFormValid} value="Create Excursion" />
-                </form>
-            </section>
-        </>
+                <label htmlFor="image">Image:</label>
+                <input
+                    type="text"
+                    id="image"
+                    name="image"
+                    placeholder="Image..."
+                    value={values.image}
+                    onChange={changeHandler}
+                    onBlur={isCorrectImageUrl}
+                />
+                {errors.image &&
+                    <p className="create-error">The image url should start with 'http'</p>
+                }
+
+                <input type="submit" className={!isFormValid ? 'submitButton' : ''} disabled={!isFormValid} value="Create Excursion" />
+            </form>
+        </section>
+
     )
 }
 

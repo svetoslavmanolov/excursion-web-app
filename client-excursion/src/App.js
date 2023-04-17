@@ -19,6 +19,7 @@ import EditExcursion from "./components/EditExcursion/EditExcursion";
 import Search from "./components/Search/Search";
 import ErrorBoundary from "./services/ErrorBoundary";
 import ExcursionOwner from "./common/ExcursionOwner";
+import { Footer } from "./components/Footer/Footer";
 
 // const Catalog = lazy(() => import('./components/Catalog/Catalog'));
 
@@ -49,6 +50,7 @@ function App() {
           </Routes>
         </SearchProvider>
       </ExcursionProvider>
+      <Footer />
     </AuthProvider >
   );
 }

@@ -16,8 +16,6 @@ router.post('/register', isGuest, async (req, res) => {
     try {
         const user = await authService.create({ email, username, password });
         const token = await authService.createToken(user);
-        // const payload = { _id: user._id, username: user.username };
-        // const token = jwt.sign(payload, SECRET, { expiresIn: '1d' });
         res.cookie('token', token, { httpOnly: true })
         res.status(200).json({ user: { _id: user._id, email: user.email, username: user.username } })
     } catch (error) {
@@ -37,7 +35,7 @@ router.post('/login', isGuest, async (req, res) => {
     }
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isAuth, (req, res) => {
     res.clearCookie('token');
     res.status(200).json({});
 });

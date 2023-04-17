@@ -13,12 +13,10 @@ const Catalog = () => {
                 setData(excursions);
             });
     }, []);
-    console.log(data)
-
 
     return (
-        <section id="viewCatalog" className="background-img">
-            <div className="added-toys">
+        <section>
+            <div className="added-excursions">
                 {data.length > 0
                     ? data.map(x => <CatalogItem key={x._id} excursion={x} />)
                     : <div className="guest">Loading...</div>
@@ -28,7 +26,6 @@ const Catalog = () => {
                 } */}
             </div>
         </section >
-
     )
 }
 

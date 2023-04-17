@@ -4,7 +4,6 @@ import './Login.css';
 
 import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from '../../services/authService';
-import ErrorHandler from "../ErrorHandler/ErrorHandler";
 
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
@@ -30,8 +29,6 @@ const Login = () => {
 
     return (
         <section id="loginPage">
-            {error && <ErrorHandler error={error} />}
-
             <form id='loginForm' onSubmit={onSubmit}>
                 <label htmlFor="email">Email:</label>
                 <input type="text" id="email" name="email" placeholder="Email" />

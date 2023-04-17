@@ -6,7 +6,6 @@ const { preLoadExcursion, isExcursionOwner } = require('../middlewares/excursion
 const excursionService = require('../services/excursionService');
 const userService = require('../services/userService');
 const { getErrorMessage } = require('../utils/errorHelpers');
-// const { COOKIE_SESSION_NAME } = require('../constants');
 
 router.post('/create', async (req, res) => {
     const excursionData = { ...req.body, owner: req.user._id, creatorName: req.user.username };
@@ -16,13 +15,11 @@ router.post('/create', async (req, res) => {
         const excursion = await excursionService.create(excursionData);
         user.excursions.push(excursion._id);
         await user.save();
-
-        res.status(200).json( excursion )
+        res.status(200).json(excursion)
     } catch (error) {
         res.status(400).json({ error: getErrorMessage(error) });
     }
 });
-
 
 router.get('/', async (req, res) => {
     try {
@@ -34,11 +31,13 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:excursionId/details', async (req, res) => {
-    const excursion = await excursionService.getOneDetailed(req.params.excursionId).lean();  //tuk sme populate-nali author, no ne i usersShared, s koito move da si raboti kato masiv ot ObjectId-ta i veche ako iskame i te da sa popalneni kato imena i obekti trqbva da gi populate-nem i tqh
-    // res.json({ ...excursion, isOwner, isBought });
-    // const bookedUsers = excursion.listOfUsersBooked.map(x => x.username).join(', ');
-    // console.log(bookedUsers);
-    res.json({ ...excursion });
+    try {
+        const excursion = await excursionService.getOneDetailed(req.params.excursionId).lean();  //tuk sme populate-nali author, no ne i usersShared, s koito move da si raboti kato masiv ot ObjectId-ta i veche ako iskame i te da sa popalneni kato imena i obekti trqbva da gi populate-nem i tqh
+        res.json({ ...excursion });
+    } catch (error) {
+        res.status(400).json({ error: getErrorMessage(error) });
+    }
+
 });
 
 router.get('/:excursionId/book', isAuth, async (req, res) => {
@@ -56,7 +55,6 @@ router.get('/:excursionId/book', isAuth, async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: getErrorMessage(error) });
     }
-
 });
 
 router.post('/:excursionId/edit', isAuth, preLoadExcursion, isExcursionOwner, async (req, res) => {  //tuk preLoadPublication shte raboti samo ako ima ssa sashtoto ime :publicationId. Tova si e nqkakva nasha vatresha konvenciq

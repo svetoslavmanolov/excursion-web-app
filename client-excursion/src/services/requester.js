@@ -1,21 +1,14 @@
-// import { cookieValue } from "../components/Catalog/Catalog";
-
 const request = async (method, url, data) => {
     try {
-
         let headers = {};
         let buildRequest;
 
         if (method === 'GET') {
-            // buildRequest = fetch(url, { headers, withCredentials: true });
-            buildRequest = fetch(url, { headers, credentials: true });
-            // buildRequest = fetch(url, { headers });
+            buildRequest = fetch(url, { headers, credentials: 'include' });
         } else {
             buildRequest = fetch(url, {
                 method,
-                // credentials: 'include',
-                // withCredentials: true,
-                credentials: true,
+                credentials: 'include',
                 headers: {
                     ...headers,
                     'content-type': 'application/json'
@@ -25,7 +18,6 @@ const request = async (method, url, data) => {
         }
 
         const response = await buildRequest;
-        
         // if(!response.ok) {
         //     throw Error('Could not fetch the data');
         // }
@@ -41,9 +33,3 @@ export const post = request.bind({}, 'POST');
 export const patch = request.bind({}, 'PATCH');
 export const put = request.bind({}, 'PUT');
 export const del = request.bind({}, 'DELETE');
-
-// let headers = {
-        //     'cookies': document.cookie.split(';')
-        //         .find(row => row.startsWith('user='))
-        //         .split('=')[1]
-        // }

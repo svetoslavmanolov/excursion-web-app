@@ -161,7 +161,7 @@ const EditExcursion = () => {
                         <p className="create-error">The image url should start with 'http'</p>
                     }
 
-                    <input type="submit" className={!isFormValid ? 'submitButton' : ''} disabled={!isFormValid} defaultValue="Edit Excursion Offer" />
+                    <input type="submit" className={!isFormValid ? 'submitButton' : ''} disabled={!isFormValid} value="Edit Excursion" />
                 </form>
             </section>
         </>
