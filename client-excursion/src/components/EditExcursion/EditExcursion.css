@@ -10,8 +10,8 @@
   display: inline-block;
   margin-top: 2%;
   background: rgba(80, 90, 200, 0.8);
-  width: 30%;
   border: 1px solid white;
+  width: 30%;
   border-radius: 10px;
 }
 

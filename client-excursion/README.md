@@ -5,6 +5,11 @@ There is additional functionality that you can take advantage of when creating a
 
 # Project architecture
 
+Technologies involed: \
+Front End - React \
+Back End - Node.js with Epxress \
+MERN stack is used \
+
 The application uses services that perform basic requests to the server (back end) of the application. The data received from the server serves the functional components that render the individual pages in the application. Also used is a context in which the main functions for processing the data from the server are performed via a useReducer hook. The useContext hook provides the data to each component that needs the relevant data avoiding props drilling. A routing guard has also been created to prevent unauthorized routing. The application uses cookies, which when a user logs in, a JsonWebToken is created with the necessary data for the user. 
 In the app is used MongoDB database for storage data.
 

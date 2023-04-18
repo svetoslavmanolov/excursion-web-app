@@ -28,28 +28,30 @@ function App() {
   return (
     <AuthProvider>
       <Header />
-      <ExcursionProvider>
-        <SearchProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/create" element={<CreateExcursion />} />
-            <Route element={<ExcursionOwner />}>
-              <Route path="/excursions/:excursionId/edit" element={<EditExcursion />} />
-            </Route>
-            <Route path="/catalog" element={
-              <ErrorBoundary fallback={<h1>Error Catalog</h1>}>
-                <Catalog />
-              </ErrorBoundary>
-            } />
-            <Route path="/catalog/:excursionId" element={<ExcursionDetails />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </SearchProvider>
-      </ExcursionProvider>
+      <div style={{ height: "100%" }}>
+        <ExcursionProvider>
+          <SearchProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/create" element={<CreateExcursion />} />
+              <Route element={<ExcursionOwner />}>
+                <Route path="/excursions/:excursionId/edit" element={<EditExcursion />} />
+              </Route>
+              <Route path="/catalog" element={
+                <ErrorBoundary fallback={<h1>Error Catalog</h1>}>
+                  <Catalog />
+                </ErrorBoundary>
+              } />
+              <Route path="/catalog/:excursionId" element={<ExcursionDetails />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </SearchProvider>
+        </ExcursionProvider>
+      </div>
       <Footer />
     </AuthProvider >
   );

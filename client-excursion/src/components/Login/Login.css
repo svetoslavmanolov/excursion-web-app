@@ -1,4 +1,4 @@
-.loginPage {
+#loginPage {
     text-align: center;
     margin-top: 5px;
     position: relative;
@@ -35,5 +35,11 @@
     margin-bottom: 5%;
     width: 40%;
     font-size: 20px;
+  }
+
+  #loginForm .create-error {
+    color: orangered;
+    font-size: 15px;
+    margin: 1px;
   }
   
