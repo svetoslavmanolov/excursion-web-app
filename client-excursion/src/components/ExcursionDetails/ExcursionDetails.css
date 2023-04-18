@@ -1,8 +1,10 @@
 #detailsPage {
+  display: flex;
   text-align: center;
   margin-top: 5px;
   position: relative;
   padding-bottom: 6px;
+  justify-content: center;
 }
 
 #detailsInfo {
@@ -11,7 +13,7 @@
   background: rgba(80, 90, 200, 0.8);
   width: 60%;
   border: 1px solid white;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 5%;
 }
 
@@ -21,23 +23,18 @@
 }
 
 #detailsInfo h2 {
-  padding-top: 200px;
+  padding-top: 40px;
   font-size: 26px;
   color: rgb(30, 30, 30);
 }
 
 #detailsInfo h3 {
   font-size: 20px;
+  padding-bottom: 20px;
   width: 80%;
   display: inline-block;
   color: rgb(30, 30, 30);
 }
-
-/* .info {
-    color: white;
-    letter-spacing: 1px;
-    display: inline-block;
-  } */
 
 .info {
   color: white;
@@ -49,14 +46,15 @@
 
 .info-text {
   text-align: start;
+  margin-top: 20px;
 }
 
 .info img {
-  /* width: 70%; */
-  /* height: inherit; */
   height: 400px;
   width: 400px;
-  padding: 0 30px 0 30px;
+  margin: 30px 30px 10px 30px;
+ border: 1px solid black;
+ border-radius: 10px;
   /* border: black */
 }
 

@@ -69,20 +69,20 @@ const ExcursionDetails = () => {
     };
 
     return (
-
-        < section id="detailsPage" >
+        <section id="detailsPage">
             <div id="detailsInfo">
                 <h1>EXCURSION NAME: {currentExcursion.title}</h1>
                 <div className="info">
                     <div><img src={currentExcursion.image} alt='excursionImage' /></div>
                     <div className="info-text">
-                        <h3>DURATION: {currentExcursion.duration}</h3>
-                        <h3>DESTINATION: {currentExcursion.destination}</h3>
-                        <h3>DESCRIPTION: {currentExcursion.description}</h3>
-                        <h3>CREATOR: {currentExcursion.creatorName}</h3>
+                        <h3><span style={{ textDecoration: 'underline' }}>DURATION:</span> {currentExcursion.duration}</h3>
+                        <h3><span style={{ textDecoration: 'underline' }}>DESTINATION:</span> {currentExcursion.destination}</h3>
+                        <h3><span style={{ textDecoration: 'underline' }}>DESCRIPTION:</span> {currentExcursion.description}</h3>
+                        <h3><span style={{ textDecoration: 'underline' }}>CREATOR:</span> {currentExcursion.creatorName}</h3>
                         <br />
-                        <h3>PEOPLE WHO HAVE BOOKED THIS PLACE: <br /><span style={{ fontStyle: 'italic' }}>{bookedUsers.join(', ')}</span></h3>
-                        <h2>PRICE: ${currentExcursion.price}</h2>
+                        <h3><span style={{ textDecoration: 'underline' }}>PEOPLE WHO HAVE BOOKED THIS PLACE:</span> <br />
+                            <span style={{ fontStyle: 'italic' }}>{bookedUsers.join(', ')}</span></h3>
+                        <h2><span style={{ textDecoration: 'underline' }}>PRICE:</span> ${currentExcursion.price}</h2>
                     </div>
                 </div>
                 <div className="buttons">
@@ -104,15 +104,15 @@ const ExcursionDetails = () => {
                                         <span>Comment: <span style={{ fontWeight: 'bold' }}>{`${x.text}`}</span></span>
                                     </li>
                                 )}
+
                             </ul>
-                            {!currentExcursion.comments &&
-                                <p>No comments.</p>
-                            }
                         </div>
+                        {currentExcursion.comments.length === 0 &&
+                            <p>No comments yet</p>
+                        }
                     </div>
 
                     <article className="create-comment">
-                        {/* <label>Add new comment:</label> */}
                         <form className="form" onSubmit={addCommentHandler}>
                             <textarea
                                 name="comment"

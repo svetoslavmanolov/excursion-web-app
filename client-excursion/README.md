@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Excursion Web App 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This simple web application allows you to view created different excursions to any part of the world as well as leave comments under each one even if you do not have a registered account. You can see their creator as well as the people who have made a reservation for this excursion. 
+There is additional functionality that you can take advantage of when creating an account. This gives you the right to create your own excursions to different destinations, you can change already created ones and delete existing ones.
 
-## Available Scripts
+# Project architecture
 
-In the project directory, you can run:
+The application uses services that perform basic requests to the server (back end) of the application. The data received from the server serves the functional components that render the individual pages in the application. Also used is a context in which the main functions for processing the data from the server are performed via a useReducer hook. The useContext hook provides the data to each component that needs the relevant data avoiding props drilling. A routing guard has also been created to prevent unauthorized routing. The application uses cookies, which when a user logs in, a JsonWebToken is created with the necessary data for the user. 
+In the app is used MongoDB database for storage data.
 
-### `npm start`
+# To run locally on your machine:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+First you must install dependencies in the root directory of client and server and then run command 'npm install':
 
-### `npm test`
+Client:  `...cd/client` and then `npm install`
+Server:  `...cd/server` and then `npm install`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+To run the project in the root directory you can run the following commands:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Client:  `...cd/client` and then `npm start`
+Server:  `...cd/server` and then `npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open (http://localhost:3000) to view it in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
