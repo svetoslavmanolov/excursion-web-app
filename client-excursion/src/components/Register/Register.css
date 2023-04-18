@@ -36,4 +36,10 @@
       width: 40%;
       font-size: 20px;
   }
+
+  #registerForm .create-error {
+    color: orangered;
+    font-size: 15px;
+    margin: 1px;
+  }
   

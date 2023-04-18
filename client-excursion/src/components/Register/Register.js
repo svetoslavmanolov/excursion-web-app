@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
@@ -8,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const { userLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -19,6 +22,10 @@ const Register = () => {
 
         authService.register(email, username, password)
             .then(authData => {
+                if (authData.error) {
+                    setError(authData.error)
+                    return;
+                }
                 userLogin(authData);
                 navigate('/catalog');
             });
@@ -33,6 +40,9 @@ const Register = () => {
                 <input type="text" id="username" name="username" placeholder="Enter your Username" />
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Password" />
+                {error &&
+                    <p className="create-error">{error}</p>
+                }
                 <input type="submit" className="register" value="Register" />
                 <span style={{color:'white'}}>Already have an account? <Link to={`/login`} style={{textDecoration:'underline'}}>Login</Link></span>
             </form>

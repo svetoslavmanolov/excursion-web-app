@@ -18,7 +18,7 @@ const ExcursionDetails = () => {
     const [bookedUsers, setBookedUsers] = useState([]);
     const [error, setError] = useState('');
 
-    const currentExcursion = selectExcursion(excursionId);
+    let currentExcursion = selectExcursion(excursionId);
 
     useEffect(() => {
         const effectFunc = async () => {
@@ -27,12 +27,13 @@ const ExcursionDetails = () => {
             fetchExcursionDetails(excursionId, { ...excursionDetails, comments: excursionComments.map(x => x) });
             setIsBooked(excursionDetails.listOfUsersBooked.some(x => x._id === user?._id));
             setBookedUsers(excursionDetails.listOfUsersBooked.map(x => x.username));
+            currentExcursion = await selectExcursion(excursionId);
         }
         effectFunc();
     }, [isBooked]);
 
-    const isOwner = currentExcursion.owner._id === user?._id;
-
+    const isOwner = currentExcursion?.owner?._id === user?._id;
+    
     const excursionDeleteHandler = () => {
         const confirmation = window.confirm('Are you sure you want to delete this excursion?');
 
@@ -107,7 +108,7 @@ const ExcursionDetails = () => {
 
                             </ul>
                         </div>
-                        {currentExcursion.comments.length === 0 &&
+                        {currentExcursion?.comments?.length === 0 &&
                             <p>No comments yet</p>
                         }
                     </div>
