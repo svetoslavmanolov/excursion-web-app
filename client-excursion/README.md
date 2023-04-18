@@ -14,14 +14,14 @@ In the app is used MongoDB database for storage data.
 
 First you must install dependencies in the root directory of client and server and then run command 'npm install':
 
-Client:  `...cd/client` and then `npm install`
+Client:  `...cd/client` and then `npm install` \
 Server:  `...cd/server` and then `npm install`
 
 ## Usage
 
 To run the project in the root directory you can run the following commands:
 
-Client:  `...cd/client` and then `npm start`
+Client:  `...cd/client` and then `npm start` \
 Server:  `...cd/server` and then `npm start`
 
 Open (http://localhost:3000) to view it in your browser.
