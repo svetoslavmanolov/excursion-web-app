@@ -33,7 +33,7 @@ const ExcursionDetails = () => {
     }, [isBooked]);
 
     const isOwner = currentExcursion?.owner?._id === user?._id;
-    
+
     const excursionDeleteHandler = () => {
         const confirmation = window.confirm('Are you sure you want to delete this excursion?');
 
@@ -113,20 +113,22 @@ const ExcursionDetails = () => {
                         }
                     </div>
 
-                    <article className="create-comment">
-                        <form className="form" onSubmit={addCommentHandler}>
-                            <textarea
-                                name="comment"
-                                placeholder="Add your comment here..."
-                            />
+                    {user &&
+                        <article className="create-comment">
+                            <form className="form" onSubmit={addCommentHandler}>
+                                <textarea
+                                    name="comment"
+                                    placeholder="Add your comment here..."
+                                />
 
-                            <input
-                                className="btn submit"
-                                type="submit"
-                                value="Add comment"
-                            />
-                        </form>
-                    </article>
+                                <input
+                                    className="btn submit"
+                                    type="submit"
+                                    value="Add comment"
+                                />
+                            </form>
+                        </article>
+                    }
                 </div>
             </div>
         </section >

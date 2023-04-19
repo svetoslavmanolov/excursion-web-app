@@ -1,6 +1,6 @@
 .introduction {
+    height: 70vh;
     text-align: left;
-    /* height: 65vh; */
     width: 62%;
     margin-top: 10%;
     margin-left: 10%;
@@ -14,7 +14,6 @@
     border: 2px solid black;
     border-radius: 20px;
     background-color:  rgba(80, 90, 200, 0.4);
-    /* margin-top: 50px; */
 }
 
 .introduction p {

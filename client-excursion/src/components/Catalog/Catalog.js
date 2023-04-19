@@ -15,14 +15,14 @@ const Catalog = () => {
     }, []);
 
     return (
-        <section>
+        <section style={{height: "90vh"}}>
             <div className="added-excursions">
                 {data.length > 0
                     ? data.map(x => <CatalogItem key={x._id} excursion={x} />)
-                    : <div className="guest">Loading...</div>
+                    : <div className="loading">Loading...</div>
                 }
                 {/* {data.length < 0 &&
-                    <div className="guest">There are no excursions found...</div>
+                    <div className="loading">There are no excursions found...</div>
                 } */}
             </div>
         </section >

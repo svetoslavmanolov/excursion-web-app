@@ -24,9 +24,9 @@ const Search = () => {
             <h1>Search for your excursion</h1>
             <form className="search-form" onSubmit={onSearchSubmit}>
                 <input type="text" className="search-title" name="" placeholder="Search for excursion title..." onChange={onSearchChange} value={search} />
-                <button type="submit" className="btn-search">Search</button>
+                <button type="submit">Search</button>
             </form>
-            <div className="search-result">
+            <div>
                 <div className="search-list">
                     {filteredExcursions.length > 0
                         ? filteredExcursions.map(x => <CatalogItem key={x._id} excursion={x} />)

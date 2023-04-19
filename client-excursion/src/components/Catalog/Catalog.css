@@ -1,9 +1,5 @@
 
 body {
-    /* min-height: 100vh;
-    display: flex;
-    flex-direction: column; */
-
     margin: 0;
     padding: 0;
     background-image: url("../../../public/image/background.jpg");
@@ -139,7 +135,7 @@ h3 {
     margin-left: 20px;
 }
 
-.guest {
+.loading {
     text-align: center;
     position: relative;
     margin: 0 auto;

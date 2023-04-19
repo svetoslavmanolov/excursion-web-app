@@ -89,7 +89,6 @@
   padding: 10px;
 }
 
-
 .create-comment>.form>textarea {
   resize: none;
   width: 300px;
@@ -101,10 +100,7 @@
 }
 
 .details-comments {
-  /* display: block; */
   display: table-cell;
-  /* text-align: start; */
-  /* padding-left: 100px; */
   padding-top: 20px;
 }
 

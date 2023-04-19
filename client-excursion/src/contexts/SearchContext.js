@@ -17,7 +17,7 @@ export const SearchProvider = ({ children }) => {
 
     const filterExcursions = (text) => {
         setFilteredExcursions(excursions.filter(x => x.title.toLowerCase().includes(text.toLowerCase())));
-        console.log(filteredExcursions)
+        // console.log(filteredExcursions)
     }
 
     return (
